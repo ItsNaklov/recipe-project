@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recipe Manager</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="recipeDisplay" class="recipe">
+      <h2 id="recipeTitle">Sample Recipe</h2>
+      <img id="recipeImage" class="recipe-image" src="" alt="Recipe Image" />
+      <p id="recipeDescription">This is a sample recipe description.</p>
+      <h3>Ingredients:</h3>
+      <ul id="ingredientList">
+        <li class="ingredient">Ingredient 1</li>
+        <li class="ingredient">Ingredient 2</li>
+      </ul>
+      <div class="add-ingredient-section">
+        <h4>Add New Ingredient</h4>
+        <input
+          type="text"
+          id="newIngredient"
+          placeholder="New Ingredient"
+          required
+        />
+        <button type="button" onclick="addNewIngredient()">
+          Add Ingredient
+        </button>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <h3>Add a New Recipe</h3>
+      <form id="recipeForm">
+        <label for="title">Recipe Title:</label>
+        <input type="text" id="title" name="title" required />
+        <br />
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" required></textarea>
+        <br />
+        <label for="pictureUrl">Picture URL:</label>
+        <input type="url" id="pictureUrl" name="pictureUrl" required />
+        <br />
+        <div class="ingredient-list" id="ingredients">
+          <div class="ingredient-item">
+            <input
+              type="text"
+              name="ingredient"
+              placeholder="Ingredient"
+              required
+            />
+            <button type="button" onclick="addIngredient()">
+              Add Ingredient
+            </button>
+          </div>
+        </div>
+        <button type="submit">Add Recipe</button>
+      </form>
+    </div>
+
+    <script src="browser_dom_events.js"></script>
+  </body>
+</html>
