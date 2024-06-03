@@ -162,7 +162,7 @@ document
   .getElementById("recipeForm")
   .addEventListener("submit", function (event) {
     event.preventDefault();
-    const name = document.getElementById("name").value;
+    const title = document.getElementById("title").value;
     const description = document.getElementById("description").value;
     const pictureUrl = document.getElementById("pictureUrl").value;
     const ingredients = document.querySelectorAll(
@@ -184,8 +184,9 @@ document
       ingredientList,
       pictureUrl
     );
-    displayRecipe(newRecipe);
-
+    frenchRecipes.push(newRecipe);
+    console.log(`noProblem`);
+    displayRecipes(frenchRecipes);
     document.getElementById("recipeForm").reset();
     document.getElementById("ingredients").innerHTML = `
     <div class="ingredient-item">
@@ -197,10 +198,10 @@ document
 
 function displayRecipe(recipe) {
   currentRecipe = recipe;
-  document.getElementById("recipeTitle").textContent = recipe.name;
-  document.getElementById("recipeDescription").textContent = recipe.description;
-  document.getElementById("recipeImage").src = recipe.pictureUrl;
-  document.getElementById("recipeImage").alt = recipe.name;
+  document.getElementById("title").textContent = recipe.title;
+  document.getElementById("description").textContent = recipe.description;
+  document.getElementById("image").src = recipe.pictureUrl;
+  document.getElementById("image").alt = recipe.title;
 
   const ingredientListElement = document.getElementById("ingredientList");
   ingredientListElement.innerHTML = "";
