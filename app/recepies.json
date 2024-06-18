@@ -1,0 +1,128 @@
+{
+  "recipes": [
+    {
+      "id": 1001,
+      "name": "Boeuf Bourguignon (Beef Burgundy)",
+      "description": "A hearty beef stew cooked in red wine, vegetables, and herbs.",
+      "ingredients": [
+        "Beef",
+        "Red wine (Burgundy is traditionally used)",
+        "Pearl onions",
+        "Mushrooms",
+        "Carrots",
+        "Garlic",
+        "Thyme",
+        "Bay leaf",
+        "Beef broth",
+        "Butter",
+        "Olive oil",
+        "Salt",
+        "Pepper"
+      ],
+      "pictureUrl": "https://www.telegraph.co.uk/content/dam/recipes/2021/01/05/beef-soup_trans_NvBQzQNjv4Bq_nNpUE6IaHI6R9FXzzuwlx_fMl3rEm0l9EtNXQnfBIo.png"
+    },
+    {
+      "id": 1002,
+      "name": "Ratatouille",
+      "description": "A vegetable stew from Provence, France. Traditionally made with eggplant, zucchini, tomatoes, peppers, onions, and garlic.",
+      "ingredients": [
+        "Eggplant",
+        "Zucchini",
+        "Tomatoes",
+        "Peppers",
+        "Onions",
+        "Garlic",
+        "Olive oil",
+        "Herbs (such as thyme, basil, and bay leaf)",
+        "Salt",
+        "Pepper"
+      ],
+      "pictureUrl": "https://www.sprinklesandsprouts.com/wp-content/uploads/2022/04/RatatouilleSQ.jpg"
+    },
+    {
+      "id": 1003,
+      "name": "Soupe à l'Oignon Gratinée (French Onion Soup)",
+      "description": "A rich and flavorful soup made with caramelized onions, beef broth, and croutons, topped with melted cheese.",
+      "ingredients": [
+        "Onions (usually yellow onions)",
+        "Beef broth",
+        "Red wine (optional)",
+        "Butter",
+        "Olive oil",
+        "Flour",
+        "Thyme",
+        "Bay leaf",
+        "Salt",
+        "Pepper",
+        "Baguette",
+        "Gruyère cheese"
+      ],
+      "pictureUrl": "https://www.fifteenspatulas.com/wp-content/uploads/2011/10/French-Onion-Soup-Fifteen-Spatulas-12.jpg"
+    },
+
+    {
+      "id": 1004,
+      "name": "Quiche Lorraine",
+      "description": "A savory tart with a flaky crust, filled with eggs, cheese, and bacon (can be made vegetarian by omitting bacon).",
+      "ingredients": [
+        "Flour",
+        "Butter",
+        "Eggs",
+        "Heavy cream",
+        "Cheese (Gruyère or Emmental)",
+        "Bacon (optional)",
+        "Onions",
+        "Nutmeg",
+        "Salt",
+        "Pepper"
+      ],
+      "pictureUrl": "https://img.taste.com.au/yzM49jFu/taste/2017/02/classic-quiche-lorraine-121391-2.jpg"
+    },
+
+    {
+      "id": 1005,
+      "name": "Crêpes",
+      "description": "French pancakes made from flour, eggs, and milk. Can be enjoyed savory or sweet with various fillings.",
+      "ingredients": [
+        "Flour",
+        "Eggs",
+        "Milk",
+        "Water",
+        "Butter",
+        "Salt",
+        "Sugar (optional)"
+      ],
+      "pictureUrl": "https://www.sweetashoney.co/wp-content/uploads/French-Crepe-Recipe-1.jpg"
+    }
+  ],
+
+  "ingredientsPrices": {
+    "flour": 2.5,
+    "sugar": 1.5,
+    "butter": 3.0,
+    "milk": 1.2,
+    "eggs": 2.0,
+    "water": 1.0,
+    "eggplant": 1.0,
+    "zucchini": 1.2,
+    "tomatoes": 1.0,
+    "peppers": 1.2,
+    "onions": 0.99,
+    "garlic": 1.0,
+    "olive oil": 7.0,
+    "herbs": 2.5,
+    "salt": 0.7,
+    "pepper": 0.7,
+    "heavy cream": 3.0,
+    "cheese": 4.5,
+    "nutmeg": 0.7,
+    "baguette": 2.0,
+    "thyme": 1.7,
+    "bay leaf": 2.5,
+    "red wine": 9.9,
+    "beef": 20.5,
+    "bacon": 1.0,
+    "mushrooms": 3.3,
+    "carrots": 1.9
+  }
+}

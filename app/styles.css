@@ -11,6 +11,11 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
 }
+.recipe-card {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+}
 
 .recipe h2 {
   margin-top: 0;

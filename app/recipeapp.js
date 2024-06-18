@@ -10,94 +10,35 @@ class Recipe {
   }
 }
 
-const frenchRecipes = [
-  new Recipe(
-    1001,
-    "Boeuf Bourguignon (Beef Burgundy)",
-    "A hearty beef stew cooked in red wine, vegetables, and herbs.",
-    [
-      "Beef",
-      "Red wine (Burgundy is traditionally used)",
-      "Pearl onions",
-      "Mushrooms",
-      "Carrots",
-      "Garlic",
-      "Thyme",
-      "Bay leaf",
-      "Beef broth",
-      "Butter",
-      "Olive oil",
-      "Salt",
-      "Pepper",
-    ],
-    "https://www.telegraph.co.uk/content/dam/recipes/2021/01/05/beef-soup_trans_NvBQzQNjv4Bq_nNpUE6IaHI6R9FXzzuwlx_fMl3rEm0l9EtNXQnfBIo.png" // Image URL for Boeuf Bourguignon
-  ),
-  new Recipe(
-    1002,
-    "Ratatouille",
-    "A vegetable stew from Provence, France. Traditionally made with eggplant, zucchini, tomatoes, peppers, onions, and garlic.",
-    [
-      "Eggplant",
-      "Zucchini",
-      "Tomatoes",
-      "Peppers",
-      "Onions",
-      "Garlic",
-      "Olive oil",
-      "Herbs (such as thyme, basil, and bay leaf)",
-      "Salt",
-      "Pepper",
-    ],
-    "https://www.sprinklesandsprouts.com/wp-content/uploads/2022/04/RatatouilleSQ.jpg" // Image URL for Ratatouille
-  ),
-  new Recipe(
-    1003,
-    "Soupe à l'Oignon Gratinée (French Onion Soup)",
-    "A rich and flavorful soup made with caramelized onions, beef broth, and croutons, topped with melted cheese.",
-    [
-      "Onions (usually yellow onions)",
-      "Beef broth",
-      "Red wine (optional)",
-      "Butter",
-      "Olive oil",
-      "Flour",
-      "Thyme",
-      "Bay leaf",
-      "Salt",
-      "Pepper",
-      "Baguette",
-      "Gruyère cheese",
-    ],
-    "https://www.fifteenspatulas.com/wp-content/uploads/2011/10/French-Onion-Soup-Fifteen-Spatulas-12.jpg" // Image URL for French Onion Soup
-  ),
+frenchRecipes = [];
+fetchedRecipes = [];
+ingredientsPrices = {};
 
-  new Recipe(
-    1004,
-    "Quiche Lorraine",
-    "A savory tart with a flaky crust, filled with eggs, cheese, and bacon (can be made vegetarian by omitting bacon).",
-    [
-      "Flour",
-      "Butter",
-      "Eggs",
-      "Heavy cream",
-      "Cheese (Gruyère or Emmental)",
-      "Bacon (optional)",
-      "Onions",
-      "Nutmeg",
-      "Salt",
-      "Pepper",
-    ],
-    "https://img.taste.com.au/yzM49jFu/taste/2017/02/classic-quiche-lorraine-121391-2.jpg" // Image URL for Quiche Lorraine
-  ),
+async function getData() {
+  const response = await fetch(
+    "https://raw.githubusercontent.com/ItsNaklov/itsnaklov.github.io/main/recipe.json"
+  );
+  const data = await response.json();
+  console.log(data);
+  fetchedRecipes = data["recipes"];
+  ingredientsPrices = data["ingredientsPrices"];
+  fetchedRecipes.forEach((recipie) => {
+    // id, name, description, ingredients, pictureUrl
+    frenchRecipes.push(
+      new Recipe(
+        recipie.id,
+        recipie.name,
+        recipie.description,
+        recipie.ingredients,
+        recipie.pictureUrl
+      )
+    );
+  });
 
-  new Recipe(
-    1005,
-    "Crêpes",
-    "French pancakes made from flour, eggs, and milk. Can be enjoyed savory or sweet with various fillings.",
-    ["Flour", "Eggs", "Milk", "Water", "Butter", "Salt", "Sugar (optional)"],
-    "https://www.sweetashoney.co/wp-content/uploads/French-Crepe-Recipe-1.jpg" // Image URL for Crêpes
-  ),
-];
+  displayRecipes(frenchRecipes);
+  return data;
+}
+
 // Function to find recipe by search word
 function findRecipeBySearch() {
   const searchInput = document.getElementById("search-input");
@@ -157,7 +98,6 @@ function displayRecipes(recipesToDisplay) {
 }
 
 // Initial display
-displayRecipes(frenchRecipes);
 document
   .getElementById("recipeForm")
   .addEventListener("submit", function (event) {
@@ -293,3 +233,44 @@ function updateTime() {
 }
 
 setInterval(updateTime, 1000);
+
+function fetchIngredientPrice(ingredient) {
+  console.log(typeof ingredient);
+  const keys = Object.keys(ingredientsPrices);
+
+  if (keys.includes(ingredient)) {
+    return `<p>Price of ${ingredient}: $${ingredientsPrices[ingredient]}</p>`;
+  } else {
+    return `<p>${ingredient} not found</p>`;
+  }
+}
+
+const ingredientSearchButton = document.getElementById(
+  "ingredient-search-button"
+);
+if (ingredientSearchButton) {
+  ingredientSearchButton.addEventListener("click", async () => {
+    const ingredientInput = document.getElementById("ingredient-search-input");
+    const resultsDiv = document.getElementById("ingredient-price-result");
+    if (!ingredientInput || !resultsDiv) {
+      console.error("Ingredient input or result div not found.");
+      return;
+    }
+
+    const ingredient = ingredientInput.value.toLowerCase().trim();
+    if (!ingredient) {
+      resultsDiv.innerHTML = "<p>Please enter an ingredient.</p>";
+      return;
+    }
+
+    try {
+      const result = await fetchIngredientPrice(ingredient);
+      resultsDiv.innerHTML = result;
+    } catch (error) {
+      resultsDiv.innerHTML = `<p>${error}</p>`;
+    }
+  });
+} else {
+  console.error("Ingredient search button not found.");
+}
+getData();
